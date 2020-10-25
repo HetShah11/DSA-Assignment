@@ -1,13 +1,18 @@
 #include <stdio.h>
 #include <stdlib.h>
-typedef struct node
+typedef struct ne
 {
 	int data, height; //h is height of tree
 	struct Node *left, *right, *prnt;  // left child, right child and parent node
 }Node;
+struct node
+{
+	int data;
+	struct node *left, *right;
+}
 Node *rtAVL, *rtBST;         // root of AVL and BST
 
-Node* createNode(int data)
+struct node* createNode(int data)
 {
     struct node* node = (struct node*)malloc(sizeof(struct node));
     node->data = data;
@@ -16,7 +21,7 @@ Node* createNode(int data)
     return (node);
 }
 
-void insert(Node **rt,int info)
+void insert(Node *rt,int info)
 {
     struct node* new=createNode(info);
 
@@ -96,7 +101,7 @@ void search(Node** rt,int dat)
     }
 }
 
-Node* Succ(Node* curr)
+struct node* Succ(Node* curr)
 {
     Node *s;
     s=curr->right;
@@ -197,5 +202,5 @@ void init(Node *x)     // Initializing values of new node
 }
 int main()
 {
-	init(ra); init(rb);
+	init(rtAVL); init(rb);
 }
